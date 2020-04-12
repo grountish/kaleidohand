@@ -9,7 +9,6 @@ let skeletons = [];
 
 let keypoints = [];
 let prevkeypoints = [];
-let osc, reverb;
 
 let symmetry = 6;
 
@@ -24,7 +23,7 @@ let strokeSize;
 function setup(){
 
 
-    cnv = createCanvas(550, 550).parent("#mySketch");
+    cnv = createCanvas(500, 500).parent("#mySketch");
     angleMode(DEGREES);
     video = createCapture(VIDEO);
     poseNet = ml5.poseNet(video, modelReady);
@@ -36,18 +35,36 @@ function setup(){
 
     submitButton = select("#submitButton");
     submitButton.mousePressed(handleSubmit);
+
+    //symmetry
     sliderSymmetry = createSlider(4, 12, 6, 1)
     sliderSymmetry.style('width', '80px');
     sliderSymmetry.parent("#knobs")
-
+    sliderSymmetry.class('input');
+    //size
     strokeSize = createSlider(2, 40, 10, 1)
     strokeSize.style('width', '80px');
     strokeSize.parent("#knobs")
+
+    //R
+    strokeR = createSlider(0, 250, 100, 1)
+    strokeR.style('width', '80px');
+    strokeR.parent("#knobs")
+    //G
+    strokeG = createSlider(0, 250, 10, 1)
+    strokeG.style('width', '80px');
+    strokeG.parent("#knobs")
+    //B
+    strokeB = createSlider(0, 250, 50, 1)
+    strokeB.style('width', '80px');
+    strokeB.parent("#knobs")
+
 }
 
 function modelReady() {
     console.log(".");
 }
+
 function draw(){
     background(220,0.4);
     drawKeypoints();
@@ -55,7 +72,6 @@ function draw(){
 }
 
 function drawKeypoints() {
-
     if (poses.length == 0) {
         return;
     }
@@ -88,7 +104,7 @@ function drawKeypoints() {
 
         for (let i = 0; i < symmetry; i++) {
             rotate(angle);
-            stroke(random(255), random(255), random(255))
+            stroke(strokeR.value(), strokeG.value(), strokeB.value())
             strokeWeight(random(strokeSize.value()));
 
             line(mx, my, pmx, pmy);
@@ -97,7 +113,6 @@ function drawKeypoints() {
             line(mx, my, pmx, pmy);
             pop();
         }
-
     }
 }
 
@@ -122,6 +137,7 @@ function handleSubmit(e){
     fetch('/api', options)
     .then(() => { appendSucces()})
     .catch(err => console.log(err));
+
 }
 
 function appendSucces(){
@@ -129,6 +145,15 @@ function appendSucces(){
     succededDiv.style('background-color','pink')
     succededDiv.style('width','50px')
     succededDiv.parent("#knobs")
+    let notLoggedIn = select('#notLogged')
+    notLoggedIn.style('display','inline')
+
 }
+
+
+
+
+
+
 
 

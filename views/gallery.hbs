@@ -3,8 +3,8 @@
     <div class='container-archive'>
         <div class="images-gallery">
             {{#each pictures}}
-            <a href="/gallery/{{this._id}}"><img src="{{this.data.image}}" class="image imgToSize" alt=""></a>
-            <div  onhover="imgSizer()"></div>
+            <a href="/gallery/{{this._id}}"><img src="{{this.data.image}}" class="imagesInGallery" alt=""></a>
+
             {{else}}
             <p>There aren't pictures yet!</p>
             {{/each}}
@@ -13,7 +13,4 @@
     
 </div>
 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
 
-<script src="/scripts/gallery.js"></script>

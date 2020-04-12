@@ -3,25 +3,27 @@
 
 <head>
   <title>{{title}}</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
   <div>
 
-    <div class="menu">
-      <a href="/gallery" class='archive'> ARCHIVE </a>
-      <a href="/main" class='play'>PLAYDRAWEXPERIMENT</a>
-      <a href="#" class='about'> ABOUT </a>
+    <ul class="menu">
+      <li><a href="/gallery" class='archive'>CONNECT</a></li>
+      <li><a href="/main" class='play'>PLAYDRAWEXPERIMENT</a></li>
+      <li><a href="#" class='about'>ABOUT</a></li>
+
       {{#if isUserLoggedIn}}
-      <a href="/personal/profile">profile</a>
-      <a href="/auth/logout">LOGOUT</a>
+      <li><a class="profile" href="/personal/profile">{{currentUserInfo.name}}</a></li>
+      <li><a class="logout" href="/auth/logout">LOGOUT</a></li>
       {{else}}
-      <a href="/auth/login">LOGIN</a>
-      <a href="/auth/signup">SIGNUP</a>
+      <li><a class="login" href="/auth/login">LOGIN</a></li>
+      <li><a class="signup" href="/auth/signup">SIGNUP</a></li>
       {{/if}}
-    </div>
+    </ul>
+
     <div class="transition-wipe overlay"></div>
   </div>
   <div id="swap" class="transition-fade">
