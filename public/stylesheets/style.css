@@ -225,6 +225,7 @@ input[type=range]:focus::-ms-fill-upper {
   margin: 0 auto;
 }
 
+
 .imagesInGallery {
   width: 300px;
   margin: 10px;
@@ -235,7 +236,9 @@ input[type=range]:focus::-ms-fill-upper {
 
 .imagesInGallery:hover {
   width: 350px;
+
 }
+
 
 .title-archive {
   color: #000000;
@@ -384,6 +387,7 @@ html.is-animating .transition-fade {
   }
 }
 
+
 .forms {
  font-family: Helvetica;
 }
@@ -433,4 +437,5 @@ html.is-animating .transition-fade {
   float: right;
   width: 70%;
 } 
+
 
