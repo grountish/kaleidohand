@@ -67,10 +67,11 @@
 }
 
 .image {
-  width: 300px;
   margin: 10px;
   padding: 10px;
+ 
 }
+
 
 .title-archive {
   color: #000000;
@@ -209,3 +210,4 @@ html.is-animating .transition-fade {
     opacity: 1;
   }
 }
+
